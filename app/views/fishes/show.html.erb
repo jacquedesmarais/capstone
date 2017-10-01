@@ -1,7 +1,15 @@
-<h2>Name: <%= @fish.name %></a></h2>
-<h4>Family: <%= @fish.family %></h4>
-<h4>Color: <%= @fish.color %></h4>
-<h4>Description: <%= @fish.description %></h4>
-
+<div class="container">
+  <h2>Name: <%= @fish.name %></a></h2>
+</div>
+<div class="container">
+  <h4>Family: <%= @fish.family %></h4>
+</div>
+<div class="container">
+  <h4>Color: <%= @fish.color %></h4>
+</div>
+<div class="container">
+  <h4>Description: <%= @fish.description %></h4>
+</div>
+<br>
 <%= link_to "Edit Animal", "/fishes/#{ @fish.id }/edit", class: "btn btn-warning" %>
 <%= link_to "Delete Animal", "/fishes/#{ @fish.id }", method: :delete, class: "btn btn-danger" %>
