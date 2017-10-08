@@ -1,0 +1,15 @@
+<center><h1>All Aquariums</h1></center>
+
+<% @aquariums.each_slice(3) do |aquarium_slice| %>
+  <div class="row">
+    <% aquarium_slice.each do |aquarium| %>
+      <div class="col-md-4 col-sm-6 product-index-single">
+        <div class="well">
+          <h2>Name: <a href="/aquariums/<%= aquarium.id %>"><%= aquarium.name %></a></h2>
+          <h5>City: <%= aquarium.city %></h5>
+          <h3>State: <%= aquarium.state %></h3>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
