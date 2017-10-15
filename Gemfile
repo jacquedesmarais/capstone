@@ -28,6 +28,11 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'carrierwave'
+gem 'mini_magick', '~> 3.5.0'
+gem 'fog'
+gem 'figaro'
+gem 'unf'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
