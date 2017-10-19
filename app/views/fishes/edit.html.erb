@@ -1,29 +1,26 @@
-<h1>Edit Fish</h1>
+<h1>New Fish</h1>
 
-<%= form_tag "/fishes/#{ @fish.id }", method: :patch do %>
-  <form>
+<%= form_for(@fish, url: "/fishes/#{ @fish.id }") do |f| %>
   <div class="form-group">
     <label for="name">Name: </label>
-    <input type="text" name="name" value="<%= @fish.name %>">
+    <%= f.text_field :name, value: @fish.name %>
   </div>
   <div class="form-group">
     <label for="family">Family: </label>
-    <input type="text" name="family" value="<%= @fish.family %>">
+    <%= f.text_field :family, value: @fish.family %>
   </div>
   <div class="form-group">
     <label for="color">Color: </label>
-    <input type="text" name="color" value="<%= @fish.color %>">
-  </div>
-  <div class="form-group">
-    <label for="image">Image: </label>
-    <input type="text" name="image_url" value="<%= @fish.default_image %>">
+    <%= f.text_field :color, value: @fish.color %>
   </div>
   <div>
     <label for="description">Description: </label>
-    <input type="text" name="description" value="<%= @fish.description %>">   
-  </div>
+    <%= f.text_field :description, value: @fish.description %>
+  </div><br>
+
+  <center><div class="form-group">
+    <%= f.file_field :images, multiple: true %>
+  </div></center>
   <br>
-  <br>
-    <button class="btn btn-success" type="submit" class="btn btn-default">Save</button>
-  </form>
+  <%= f.submit "Add Fish", class: 'btn btn-default' %>
 <% end %>

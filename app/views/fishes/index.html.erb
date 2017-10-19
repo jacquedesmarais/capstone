@@ -1,9 +1,6 @@
 <center><h1>All Fish</h1></center>
-
 <% @fishes.each_slice(3) do |fish_slice| %>
-  <div class="row">
     <% fish_slice.each do |fish| %>
-      <div class="col-md-4 col-sm-6 product-index-single">
         <div class="well">
           <h2>Name: <a href="/fishes/<%= fish.id %>"><%= fish.name %></a></h2>
           <h5>Family: <%= fish.family %></h5>
@@ -11,7 +8,5 @@
           <img src="<%= fish.default_image %>">  
           <h4>Description: <%= fish.description %></h4>
         </div>
-      </div>
     <% end %>
-  </div>
 <% end %>

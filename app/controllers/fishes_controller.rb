@@ -10,21 +10,11 @@ class FishesController < ApplicationController
   end
 
   def create
-    @fish = Fish.new(
-                    name: params[:name],
-                    family: params[:family],
-                    color: params[:color],
-                    description: params[:description]
-                    )
+    p fish_params
+    @fish = Fish.new(fish_params)
     @fish.save
 
     redirect_to "/fishes/#{ @fish.id }" 
-
-    image = Image.new(
-                      fish_id: params[:fish_id],
-                      url: params[:url]
-                      )
-    image.save
   end
 
   def show
@@ -38,13 +28,14 @@ class FishesController < ApplicationController
 
   def update
     @fish = Fish.find(params[:id])
+    @fish.update(fish_params)
 
-    @fish.assign_attributes(
-                          name: params[:name],
-                          family: params[:family],
-                          color: params[:color],
-                          description: params[:description]
-                          )
+    # @fish.assign_attributes(
+    #                       name: params[:name],
+    #                       family: params[:family],
+    #                       color: params[:color],
+    #                       description: params[:description]
+    #                       )
 
     if @fish.save
       flash[:success] = "You edited your #{ @fish.name }. Be sure to say hi next time you visit."
@@ -71,8 +62,15 @@ class FishesController < ApplicationController
 
   def destroy
     fish = Fish.find(params[:id])
+    fish.remove_images!
     fish.destroy
     redirect_to "/"
+  end
+
+  private
+
+  def fish_params
+    params.require(:fish).permit(:name, :family, :color, :description, { images: []})
   end
 
 end
