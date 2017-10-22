@@ -1,12 +1,41 @@
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-align: center;
+  background-color: lightgrey;
 }
 
 .container {
-  max-width: 600px;
+  width: 100%;
 }
 
 .well img {
   width: 100%;
+}
+
+.well {
+  padding-top: 0px;
+  padding-bottom: 5px;
+  background-color: #D4FBFA;
+}
+
+.name {
+  text-align: center;
+}
+
+.image {
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.container-fluid {
+  background-color: white;
+}
+
+.jumbotron {
+  background-image: url('http://www.young-diplomats.com/file/2017/02/seabed-678x381.jpg');
+  color: white;
+}
+
+.img-responsive {
+  width: 50%;
 }

@@ -1,0 +1,16 @@
+<h1>Match the Fish With Their Name</h1>
+<br>
+<div class="image">
+<% @fishes.each do |fish| %>
+  <a href="/fishes/<%= fish.id %>"><img src="<%= fish.default_image %>" width="250" height="200"></a>
+  <div class="form-group">
+    <br>
+    <select name="name">
+    Fish Name:
+    <% @fishes.each do |fish| %>
+      <option value="<%= fish.name %>"><%= fish.name %></option>
+      <% end %>
+    </select>
+  </div>
+  <% end %>
+</div>

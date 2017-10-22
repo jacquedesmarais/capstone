@@ -1,12 +1,17 @@
-<center><h1>All Fish</h1></center>
+<div class="container">
+  <div class="jumbotron">
+    <h1 class="display-3">My Fish</h1>
+  </div>
+
 <% @fishes.each_slice(3) do |fish_slice| %>
+  <div class="row">
     <% fish_slice.each do |fish| %>
+      <div class="col-md-4 col-sm-6 product-index-single">
         <div class="well">
-          <h2>Name: <a href="/fishes/<%= fish.id %>"><%= fish.name %></a></h2>
-          <h5>Family: <%= fish.family %></h5>
-          <h3>Color: <%= fish.color %></h3>
-          <img src="<%= fish.default_image %>">  
-          <h4>Description: <%= fish.description %></h4>
+          <h2><a href="/fishes/<%= fish.id %>"><img src="<%= fish.default_image %>"></a></h2>   
         </div>
+      </div>
     <% end %>
+  </div>
 <% end %>
+</div>

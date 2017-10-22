@@ -1,16 +1,17 @@
 class FishesController < ApplicationController
 
   def index
-    @title = "All Fish"
+    @title = "My Fish"
     @fishes = Fish.all
   end
 
   def new
+    @title = "New Fish"
     @fish = Fish.new
   end
 
   def create
-    p fish_params
+    @title = "New Fish"
     @fish = Fish.new(fish_params)
     @fish.save
 
@@ -18,16 +19,18 @@ class FishesController < ApplicationController
   end
 
   def show
-    @title = "Fish"
     @fish = Fish.find(params[:id]) 
+    @title = "#{ @fish.name }"
   end
 
   def edit
     @fish = Fish.find(params[:id]) 
+    @title = "Edit #{ @fish.name }"
   end
 
   def update
     @fish = Fish.find(params[:id])
+    @title = "Update #{ @fish.name }"
     @fish.update(fish_params)
 
     # @fish.assign_attributes(
@@ -61,16 +64,21 @@ class FishesController < ApplicationController
   end
 
   def destroy
-    fish = Fish.find(params[:id])
-    fish.remove_images!
-    fish.destroy
+    @fish = Fish.find(params[:id])
+    @title = "Delete #{ @fish.name }"
+    @fish.remove_images!
+    @fish.destroy
     redirect_to "/"
   end
 
-  private
+  def game
+    @title = "Fish Matching Game"
+    @fishes = Fish.all
+  end
 
+# private only below this line!
+  private
   def fish_params
     params.require(:fish).permit(:name, :family, :color, :description, { images: []})
   end
-
 end

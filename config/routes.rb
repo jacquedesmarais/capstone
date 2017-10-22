@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get '/' => 'fishes#index'
   get '/fishes' => 'fishes#index'
   get '/fishes/new' => 'fishes#new'
+  get '/fishes/game' => 'fishes#game'
   post '/fishes' => 'fishes#create'
   get '/fishes/:id' => 'fishes#show'
   get '/fishes/:id/edit' => 'fishes#edit'
