@@ -7,6 +7,9 @@
 <div class="container">
   <h4>Color: <%= @fish.color %></h4>
 </div>
+<div class="container">
+  <h4>Aquarium: <%= @fish.aquarium_name %></h4>
+</div>
 <div>
   <% @fish.images.each do |image| %>
   <center><img src="<%= image.url %>" alt="<%= @fish.name %>" class="img-responsive"></center><br>

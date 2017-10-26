@@ -8,6 +8,7 @@ class FishesController < ApplicationController
   def new
     @title = "New Fish"
     @fish = Fish.new
+    @aquariums = Aquarium.all
   end
 
   def create
@@ -26,6 +27,7 @@ class FishesController < ApplicationController
   def edit
     @fish = Fish.find(params[:id]) 
     @title = "Edit #{ @fish.name }"
+    @aquariums = Aquarium.all
   end
 
   def update
@@ -74,11 +76,12 @@ class FishesController < ApplicationController
   def game
     @title = "Fish Matching Game"
     @fishes = Fish.all
+
   end
 
 # private only below this line!
   private
   def fish_params
-    params.require(:fish).permit(:name, :family, :color, :description, { images: []})
+    params.require(:fish).permit(:name, :family, :color, :description, { images: []}, :aquarium_name)
   end
 end
