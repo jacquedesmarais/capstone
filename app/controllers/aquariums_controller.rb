@@ -38,7 +38,7 @@ class AquariumsController < ApplicationController
   def update
     @aquarium = Aquarium.find(params[:id])
 
-    @aquarium.assign_attributes(
+    @aquarium.update(
                                 name: params[:name],
                                 city: params[:city],
                                 state: params[:state]

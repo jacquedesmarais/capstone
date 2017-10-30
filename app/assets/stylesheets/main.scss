@@ -16,13 +16,13 @@ body {
   background-color: white;
 }
 
-#game.correct {
-  background-color: green;
-}
+// #correct.well {
+//   background-color: green;
+// }
 
-#game.incorrect {
-  background-color: red;
-}
+// #game.incorrect {
+//   background-color: red;
+// }
 
 .well {
   padding-top: 0px;
@@ -31,7 +31,7 @@ body {
 }
 
 .container-fluid {
-  background-color: white;
+  background-image: url('navbar.jpg');
 }
 
 .jumbotron {
