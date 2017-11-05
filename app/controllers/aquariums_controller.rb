@@ -13,17 +13,20 @@ class AquariumsController < ApplicationController
     @aquarium = Aquarium.new(
                     name: params[:name],
                     city: params[:city],
-                    state: params[:state]
+                    state: params[:state],
+                    address: params[:address],
+                    lat: params[:lat],
+                    long: params[:long]
                     )
     @aquarium.save
 
     redirect_to "/aquariums/#{ @aquarium.id }" 
 
-    tip = Tip.new(
-                      aquarium_id: params[:aquarium_id],
-                      note: params[:note]
-                      )
-    tip.save
+    # tip = Tip.new(
+    #                   aquarium_id: params[:aquarium_id],
+    #                   note: params[:note]
+    #                   )
+    # tip.save
   end
 
   def show
@@ -32,7 +35,8 @@ class AquariumsController < ApplicationController
   end
 
   def edit
-    @aquarium = Aquarium.find(params[:id]) 
+    @aquarium = Aquarium.find(params[:id])
+    @state = @aquarium.state
   end
 
   def update
@@ -41,7 +45,10 @@ class AquariumsController < ApplicationController
     @aquarium.update(
                                 name: params[:name],
                                 city: params[:city],
-                                state: params[:state]
+                                state: params[:state],
+                                address: params[:address],
+                                lat: params[:lat],
+                                long: params[:long]
                           )
 
     if @aquarium.save
@@ -49,14 +56,14 @@ class AquariumsController < ApplicationController
       redirect_to "/aquariums/#{ @aquarium.id }"
     end
 
-    tip = Tip.find(params[:id])
+    # tip = Tip.find(params[:id])
     
-    tip.assign_attributes(
-                          aquarium_id: params[:aquarium_id],
-                          note: params[:note]
-                          )
+    # tip.assign_attributes(
+    #                       aquarium_id: params[:aquarium_id],
+    #                       note: params[:note]
+    #                       )
 
-    tip.save
+    # tip.save
   end
 
   def destroy

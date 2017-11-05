@@ -13,13 +13,12 @@
     <label for="color">Color: </label>
     <%= f.text_field :color, value: @fish.color %>
   </div>
+  <div class="description">
+    <label for="description">Description: </label><br>
+    <%= f.text_area :description, value: @fish.description, size: "60x5" %>
+  </div>
   <div>
-    <label for="description">Description: </label>
-    <%= f.text_field :description, value: @fish.description %>
-  </div><br>
-
-  <div>
-    <select name="fish[aquarium_name]">
+    <select>
       Aquarium:
       <% @aquariums.each do |aquarium| %>
         <option><%= aquarium.name %></option>

@@ -5,29 +5,35 @@
     <div class="row">
       <% fish_slice.each do |fish| %>
         <div class="col-md-4 col-sm-6 product-index-single">
-          <div id="game" class="well">
+          <div id="<%= fish.name.gsub("'","") %>" class="well game">
             <h2><img src="<%= fish.default_image %>"></h2>
-            <select name="name">
+            <select name="name" id="<%= fish.id %>">
               Fish Name:
-              <% @fishes.each do |fish| %>
-                <option value="<%= fish.name %>" name="fish_name"><%= fish.name %></option>
+              <% @fishes.shuffle.each do |fish| %>
+                <option value="<%= fish.id %>" name="fish_name"><%= fish.name %></option>
               <% end %>
             </select>
-            <button id="game" class="btn btn-success" type="submit" class="btn btn-default" onclick="game()">Guess</button>
-            <script>
-              function game($event) {
-                  var target = $($event.target);
-                  console.log(target);   
-                if (`<%= fish.name %>` === "fish_name") {
-                  document.getElementById("game").style.backgroundColor = "green"; 
-                } else {
-                  document.getElementById("game").style.backgroundColor = "red";    
-                }
-              }
-            </script>
+            <button id="game_button" class="btn btn-success" type="submit" class="btn btn-default" onclick="game_logic(<%= fish.id %>, '<%= fish.name.gsub("'","") %>')">Guess</button>
           </div>
         </div>
     <% end %>
   </div>
 <% end %>
+<script>
+function game_logic(fishId, fishName) {
+  var targetParent = document.getElementById(`${fishName}`);
+  var guessDiv = document.getElementById(`${fishId}`);
+  // var e = document.getElementById("ddlViewBy");
+  var selectedValue = guessDiv.options[guessDiv.selectedIndex].value.replace("'","");
+  if (fishId == selectedValue) {
+    console.log("same");
+    // console.log(fish_name);
+    targetParent.style.backgroundColor = "green";  
+  } else {
+    console.log("different");
+    // console.log(fishName);
+    targetParent.style.backgroundColor = "red";  
+  }
+}
+</script>
 </div>

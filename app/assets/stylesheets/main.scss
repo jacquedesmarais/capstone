@@ -12,7 +12,7 @@ body {
   width: 100%;
 }
 
-#game.well {
+.game.well {
   background-color: white;
 }
 
@@ -23,6 +23,14 @@ body {
 // #game.incorrect {
 //   background-color: red;
 // }
+
+.description.container {
+  width: 50%;
+}
+
+.description {
+  height: auto;
+}
 
 .well {
   padding-top: 0px;
@@ -40,5 +48,5 @@ body {
 }
 
 .img-responsive {
-  width: 50%;
+  width: 25%;
 }

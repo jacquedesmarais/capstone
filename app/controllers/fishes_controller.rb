@@ -14,24 +14,29 @@ class FishesController < ApplicationController
   def create
     @title = "New Fish"
     @fish = Fish.new(fish_params)
+    @aquariums = Aquarium.all
+
     @fish.save
 
     redirect_to "/fishes/#{ @fish.id }" 
   end
 
   def show
-    @fish = Fish.find(params[:id]) 
+    @fish = Fish.find(params[:id])
+    @aquarium = Aquarium.find(params[:id])
+ 
     @title = "#{ @fish.name }"
   end
 
   def edit
     @fish = Fish.find(params[:id]) 
-    @title = "Edit #{ @fish.name }"
     @aquariums = Aquarium.all
+    @title = "Edit #{ @fish.name }"
   end
 
   def update
     @fish = Fish.find(params[:id])
+    @aquarium = Aquarium.find(params[:id])
     @title = "Update #{ @fish.name }"
     @fish.update(fish_params)
     p fish_params

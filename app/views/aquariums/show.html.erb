@@ -7,13 +7,18 @@
 <div class="container">
   <h4>State: <%= @aquarium.state %></h4>
 </div>
-<% if @aquarium.tips.any? %>
-  <% @aquarium.tips.each do |tip| %>
-    <h4>Tips: <%= tip.note %></h4>
-  <% end %>
-<% else %>
- <H4>No tips available</H4>  
-<% end %>
+<div class="container">
+  <h4>Address: <%= @aquarium.address %></h4>
+</div>
+<div class="container">
+  <h4>Latitude: <%= @aquarium.lat %></h4>
+</div>
+<div>
+  <h4 class="container"><a href="https://www.google.com/maps.google.com/?ll=<%= @aquarium.lat %>,<%= @aquarium.long %>">MAP</a></h4>
+</div>
+<div class="container">
+  <h4>Longitude: <%= @aquarium.long %></h4>
+</div>
 <br>
 
 <%= link_to "Edit Aquarium", "/aquariums/#{ @aquarium.id }/edit", class: "btn btn-warning" %>

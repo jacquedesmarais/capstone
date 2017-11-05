@@ -6,8 +6,10 @@
       <div class="col-md-4 col-sm-6 product-index-single">
         <div class="well">
           <h2>Name: <a href="/aquariums/<%= aquarium.id %>"><%= aquarium.name %></a></h2>
-          <h5>City: <%= aquarium.city %></h5>
-          <h3>State: <%= aquarium.state %></h3>
+          <h4>Address: <%= aquarium.address %></h4>
+          <h4>City: <%= aquarium.city %></h4>
+          <h4>State: <%= aquarium.state %></h4>
+          <!--  <h4><a href="https://maps.google.com/?ll=<%= aquarium.lat %>,<%= aquarium.long %>">MAP</a></h4> -->         
         </div>
       </div>
     <% end %>
