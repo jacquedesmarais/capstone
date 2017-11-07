@@ -14,17 +14,18 @@ class FishesController < ApplicationController
   def create
     @title = "New Fish"
     @fish = Fish.new(fish_params)
-    @aquariums = Aquarium.all
 
-    @fish.save
+    if @fish.save
+      redirect_to "/fishes/#{ @fish.id }" 
+    else
+      @aquariums = Aquarium.all
+      render :new
+    end
 
-    redirect_to "/fishes/#{ @fish.id }" 
   end
 
   def show
-    @fish = Fish.find(params[:id])
-    @aquarium = Aquarium.find(params[:id])
- 
+    @fish = Fish.find(params[:id]) 
     @title = "#{ @fish.name }"
   end
 
@@ -35,14 +36,20 @@ class FishesController < ApplicationController
   end
 
   def update
+    p "PARAMS"
+    p params[:aquarium_id]
     @fish = Fish.find(params[:id])
-    @aquarium = Aquarium.find(params[:id])
     @title = "Update #{ @fish.name }"
-    @fish.update(fish_params)
-    p fish_params
-
-    flash[:success] = "You edited your #{ @fish.name }. Be sure to say hi next time you visit."
-    redirect_to "/fishes/#{ @fish.id }"
+    p "AQ ID"
+    p fish_params[:aquarium_id]
+    @fish.update_attributes(fish_params)
+    if @fish.save
+      flash[:success] = "You edited your #{ @fish.name }. Be sure to say hi next time you visit."
+      redirect_to "/fishes/#{ @fish.id }"
+    else
+      @aquariums = Aquarium.all
+      render :edit
+    end
   end
 
   def destroy
@@ -61,7 +68,8 @@ class FishesController < ApplicationController
 
 # private only below this line!
   private
+
   def fish_params
-    params.require(:fish).permit(:name, :family, :color, :description, :aquarium_name, { images: []})
+    params.require(:fish).permit(:aquarium_id, :name, :family, :color, :description, { images: []})
   end
 end

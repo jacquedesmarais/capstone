@@ -18,12 +18,8 @@
     <%= f.text_field :description, value: @fish.description %>
   </div><br>
   <div>
-    <select name="aquarium">
-      Aquarium:
-      <% @aquariums.each do |aquarium| %>
-        <option value="<%= aquarium.name %>"><%= aquarium.name %></option>
-      <% end %>
-    </select>
+    Aquarium:
+    <%= f.collection_select(:aquarium_id, @aquariums, :id, :name) %>
   </div><br>
   <center><div class="form-group">
     <%= f.file_field :images, multiple: true %>

@@ -1,8 +1,7 @@
 class Fish < ApplicationRecord
 mount_uploaders :images, PhotoUploader
 belongs_to :fish_connection, optional: true
-has_many :aquarium_fishes
-has_many :aquariums
+belongs_to :aquarium
 
   def default_image
     if images.count > 0

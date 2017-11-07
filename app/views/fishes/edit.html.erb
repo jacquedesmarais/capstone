@@ -18,17 +18,12 @@
     <%= f.text_area :description, value: @fish.description, size: "60x5" %>
   </div>
   <div>
-    <select>
-      Aquarium:
-      <% @aquariums.each do |aquarium| %>
-        <option><%= aquarium.name %></option>
-      <% end %>
-    </select>
+    Aquarium:
+    <%= f.collection_select(:aquarium_id, @aquariums, :id, :name) %>
   </div><br>
-
   <center><div class="form-group">
     <%= f.file_field :images, multiple: true %>
   </div></center>
   <br>
-  <%= f.submit "Add Fish", class: 'btn btn-default' %>
+  <%= f.submit "Save Fish", class: 'btn btn-default' %>
 <% end %>
