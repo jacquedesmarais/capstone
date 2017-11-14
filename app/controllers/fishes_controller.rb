@@ -3,6 +3,12 @@ class FishesController < ApplicationController
   def index
     @title = "My Fish"
     @fishes = Fish.all
+    search_term = params[:search_term]
+
+    if search_term
+      @fishes = @fishes.where("name iLIKE ?", "%#{ search_term }%")
+    end
+
   end
 
   def new
